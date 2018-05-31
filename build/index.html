@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//crsten.github.io/datepickk/dist/datepickk.min.css">
+    <link rel="stylesheet" href="css/libs/swiper.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]--> 
+
+    <style>
+        .loader {
+            background: #2a0100;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            z-index: 99999;
+            position: relative;
+        }
+        .loader svg {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            transform-origin: 50% 50%;
+            width: 84px;
+            height: initial;
+            fill: #fff;
+            animation: scale 3s ease-in-out 0s infinite;
+        }
+
+        @keyframes scale {
+            0% {
+                transform: translate(-50%,-50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%,-50%) scale(1.2);
+            }
+            100% {
+                transform: translate(-50%,-50%) scale(1);
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .loader svg { 
+                width: 54px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<!-- START CONTENT  -->
+
+<div class="loader">
+    <svg version="1.1" viewBox="0 0 23.195 47.924">
+    <style type="text/css">.st0{fill:#FFFFFF;}</style>
+        <path class="st0" d="M7.732 32.462h7.731V0H0v6.997h7.732v25.465zm15.462 8.504v-6.958H.011v6.958h15.452v6.958h7.732l-.001-6.958z"/>
+    </svg>
+</div>
+
+<section class="header">
+    <a href="/" class="header__logo">
+        <img src="img/logo.svg" alt="">
+    </a>
+    <div class="header__buttons">
+        <a href="#" class="btn btn-white events">Дата события</a>
+        <a href="#" class="btn btn-white places-btn">Места</a>
+        <a href="#" class="btn btn-white programms-btn">Тип программы</a>
+    </div>
+    <div class="header__favorites">
+        <span>26</span>
+    </div>
+    <div class="header__sponsor">
+        <img src="img/sber.svg" alt="">
+    </div>
+</section>
+
+<div id="datepicker"></div>
+
+<div class="places">
+    <div class="places__col">
+        <a href="#">
+            <span class="places__addr">петропавловская, 25а</span>
+            <span class="places__title">пермский театр оперы и балета</span>
+        </a>
+        <a href="#">
+            <span class="places__addr">ленина, 51б</span>
+            <span class="places__title">органный зал</span>
+        </a>
+        <a href="#">
+            <span class="places__addr">сибирская, 33</span>
+            <span class="places__title">дом дягилева</span>
+        </a>
+        <a href="#">
+            <span class="places__addr">комсомольскйи пр., 4</span>
+            <span class="places__title">пермская художественная галерея</span>
+        </a>
+        <a href="#">
+            <span class="places__addr">театральный сквер</span>
+            <span class="places__title">фестивальный клуб</span>
+        </a>
+    </div>
+    <div class="places__col">
+        <a href="#">
+            <span class="places__addr">ленина, 44</span>
+            <span class="places__title">частная филармония «Триумф»</span>
+        </a>
+        <a href="#">
+            <span class="places__addr">ленина, 58</span>
+            <span class="places__title">концертный зал гостиницы «урал»</span>
+        </a>
+        <a href="#">
+            <span class="places__addr">комсомольский пр., 79</span>
+            <span class="places__title">дворец культуры им. а.г. солдатова</span>
+        </a>
+        <a href="#">
+            <span class="places__addr">екатерининская, 68</span>
+            <span class="places__title">театр юного зрителя</span>
+        </a>
+        <a href="#">
+            <span class="places__addr">сибирская, 47</span>
+            <span class="places__title">дворец спорта «орленок»</span>
+        </a>
+    </div>
+
+    <a href="#" class="places__submit">Применить</a>
+
+    <div class="places__icons">
+        <a href="#" class="places__icon">
+            <svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-sleep"></use></svg>
+            <p>где остановиться</p>
+        </a>
+        <a href="#" class="places__icon">
+            <svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-food"></use></svg>
+            <p>где поесть</p>
+        </a>
+        <a href="#" class="places__icon">
+            <svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-stars"></use></svg>
+            <p>где подготовиться <br> к выходу в свет</p>
+        </a>
+        <a href="#" class="places__icon">
+            <svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-cards"></use></svg>
+            <p>где снять деньги</p>
+        </a>
+        <a href="#" class="places__icon">
+            <svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-map"></use></svg>
+            <p>что еще <br> посмотреть</p>
+        </a>
+    </div>
+</div>
+
+<div class="programms">
+    <a href="#" class="programms__item">
+        <p class="programms__title">основная программа</p>
+        <p class="programms__text">
+            мировые премьеры оперных
+            и&nbsp;балетных спектаклей, панораму
+            выступлений трупп современного
+            танца, художественные выставки,
+            концерты симфонической, 
+            камерной, органной, джазовой
+            музыки, ретроспективу
+            художественных фильмов,
+            фотовыставки.
+        </p>
+    </a>
+    <a href="#" class="programms__item">
+        <p class="programms__title">образовательная программа</p>
+        <p class="programms__text">
+            в&nbsp;рамках программы состоятся
+            мастер-классы выдающихся
+            музыкантов-участников фестиваля,
+            будет представлена насыщенная
+            лекционная программа, в&nbsp;которой
+            впервые примут участие не&nbsp;только
+            российские, но&nbsp;и&nbsp;зарубежные
+            специалисты.
+        </p>
+    </a>
+    <a href="#" class="programms__item">
+        <p class="programms__title">фестивальный клуб</p>
+        <p class="programms__text">
+            место встреч, обсуждения событий,
+            рождения новых идей. За&nbsp;154 часа
+            работы в&nbsp;уютном павильоне
+            с&nbsp;верандой и&nbsp;кофейней пройдет
+            более 80&nbsp;мероприятий.
+        </p>
+    </a>
+    <a href="#" class="programms__item">
+        <p class="programms__title">бонусная программа</p>
+        <p class="programms__text">
+            обменяйте билет с&nbsp;любого
+            события основной программы
+            фестиваля на&nbsp;специальные
+            предложения от&nbsp;наших партнеров
+        </p>
+    </a>
+    <a href="#" class="programms__submit">Применить</a>
+</div>
+
+<div id="map"></div>
+
+<div class="swiper-container">
+    <div class="hideList">
+        <svg class="icon">
+            <use xlink:href="img/symbol-defs.svg#icon-arrow-left"></use>
+        </svg>
+    </div>
+    <div class="swiper-wrapper">
+        <div class="swiper-slide card">
+            <div class="card__left">
+                <p class="card__date">14<span>.06</span>
+                </p>
+                <p class="card__time">чт / 10:00-14:00</p>
+                <p class="card__fest">
+                    <svg class="icon">
+                        <use xlink:href="img/symbol-defs.svg#icon-house"></use>
+                    </svg>
+                    <span>фестивальный клуб</span>
+                </p>
+            </div>
+            <div class="card__right">
+                <p class="label label-orange">фестивальный клуб</p>
+                <p><a href="#" class="card__title">diaghilev camp</a><svg class="card__like icon"><use xlink:href="img/symbol-defs.svg#icon-heart"></use></svg></p>
+                <p class="card__text">билеты в кассе театра</p>
+            </div>
+        </div>
+        <div class="swiper-slide card">
+            <div class="card__left">
+                <p class="card__date">14<span>.06</span>
+                </p>
+                <p class="card__time">чт / 19:00-21:00
+                    <br> опера</p>
+                <p class="card__fest">
+                    <svg class="icon">
+                        <use xlink:href="img/symbol-defs.svg#icon-house"></use>
+                    </svg>
+                    <span>пермский театр оперы и&nbsp;балета</span>
+                </p>
+            </div>
+            <div class="card__right">
+                <p class="label label-brown">образовательная программа</p>
+                <p><a href="#" class="card__title">открытие фестиваля. премьера. «жанна на костре»</a><svg class="card__like icon"><use xlink:href="img/symbol-defs.svg#icon-heart"></use></svg></p>                
+                <p class="card__text">артюр онеггер
+                    <br> билетов нет</p>
+            </div>
+        </div>
+        <div class="swiper-slide card">
+            <div class="card__left">
+                <p class="card__date">15<span>.06</span>
+                </p>
+                <p class="card__time">пт / 19:00-20:15
+                    <br> концерт</p>
+                <p class="card__fest">
+                    <svg class="icon">
+                        <use xlink:href="img/symbol-defs.svg#icon-house"></use>
+                    </svg>
+                    <span>органный зал</span>
+                </p>
+            </div>
+            <div class="card__right">
+                <p class="label label-yellow">основная программа</p>
+                <p><a href="#" class="card__title">концерт пианистов алексея любимова и алексея зуева</a><svg class="card__like icon"><use xlink:href="img/symbol-defs.svg#icon-heart"></use></svg></p>                
+                <p class="card__text">александр рабинович-бараковский, игорь стравинский
+                    <br> билетов нет</p>
+            </div>
+        </div>
+        <div class="swiper-slide card">
+            <div class="card__left">
+                <p class="card__date">15<span>.06</span>
+                </p>
+                <p class="card__time">пт / 21:00-23:00
+                    <br> опера</p>
+                <p class="card__fest">
+                    <svg class="icon">
+                        <use xlink:href="img/symbol-defs.svg#icon-house"></use>
+                    </svg>
+                    <span>пермский театр оперы и&nbsp;балета</span>
+                </p>
+            </div>
+            <div class="card__right">
+                <p class="label label-yellow">основная программа</p>
+                <p><a href="#" class="card__title">премьера. «жанна на костре»</a><svg class="card__like icon"><use xlink:href="img/symbol-defs.svg#icon-heart"></use></svg></p>
+                <p class="card__text">артюр онеггер
+                    <br> билетов нет</p>
+            </div>
+        </div>
+        <div class="swiper-slide card">
+                <div class="card__left">
+                    <p class="card__date">14<span>.06</span>
+                    </p>
+                    <p class="card__time">чт / 10:00-14:00</p>
+                    <p class="card__fest">
+                        <svg class="icon">
+                            <use xlink:href="img/symbol-defs.svg#icon-house"></use>
+                        </svg>
+                        <span>фестивальный клуб</span>
+                    </p>
+                </div>
+                <div class="card__right">
+                    <p class="label label-orange">фестивальный клуб</p>
+                    <p><a href="#" class="card__title">diaghilev camp</a><svg class="card__like icon"><use xlink:href="img/symbol-defs.svg#icon-heart"></use></svg></p>
+                    <p class="card__text">билеты в кассе театра</p>
+                </div>
+            </div>
+            <div class="swiper-slide card">
+                <div class="card__left">
+                    <p class="card__date">14<span>.06</span>
+                    </p>
+                    <p class="card__time">чт / 19:00-21:00
+                        <br> опера</p>
+                    <p class="card__fest">
+                        <svg class="icon">
+                            <use xlink:href="img/symbol-defs.svg#icon-house"></use>
+                        </svg>
+                        <span>пермский театр оперы и&nbsp;балета</span>
+                    </p>
+                </div>
+                <div class="card__right">
+                    <p class="label label-brown">образовательная программа</p>
+                    <p><a href="#" class="card__title">открытие фестиваля. премьера. «жанна на костре»</a><svg class="card__like icon"><use xlink:href="img/symbol-defs.svg#icon-heart"></use></svg></p>
+                    <p class="card__text">артюр онеггер
+                        <br> билетов нет</p>
+                </div>
+            </div>
+            <div class="swiper-slide card">
+                <div class="card__left">
+                    <p class="card__date">15<span>.06</span>
+                    </p>
+                    <p class="card__time">пт / 19:00-20:15
+                        <br> концерт</p>
+                    <p class="card__fest">
+                        <svg class="icon">
+                            <use xlink:href="img/symbol-defs.svg#icon-house"></use>
+                        </svg>
+                        <span>органный зал</span>
+                    </p>
+                </div>
+                <div class="card__right">
+                    <p class="label label-yellow">основная программа</p>
+                    <p><a href="#" class="card__title">концерт пианистов алексея любимова и алексея зуева</a><svg class="card__like icon"><use xlink:href="img/symbol-defs.svg#icon-heart"></use></svg></p>
+                    <p class="card__text">александр рабинович-бараковский, игорь стравинский
+                        <br> билетов нет</p>
+                </div>
+            </div>
+            <div class="swiper-slide card">
+                <div class="card__left">
+                    <p class="card__date">15<span>.06</span>
+                    </p>
+                    <p class="card__time">пт / 21:00-23:00
+                        <br> опера</p>
+                    <p class="card__fest">
+                        <svg class="icon">
+                            <use xlink:href="img/symbol-defs.svg#icon-house"></use>
+                        </svg>
+                        <span>пермский театр оперы и&nbsp;балета</span>
+                    </p>
+                </div>
+                <div class="card__right">
+                    <p class="label label-yellow">основная программа</p>
+                    <p><a href="#" class="card__title">премьера. «жанна на костре»</a><svg class="card__like icon"><use xlink:href="img/symbol-defs.svg#icon-heart"></use></svg></p>
+                    <p class="card__text">артюр онеггер
+                        <br> билетов нет</p>
+                </div>
+            </div>
+    </div>
+</div>
+
+<div class="banner">
+    <div class="banner__close"></div>
+    <div class="banner__wrap">
+        <div class="banner-slider">
+                <div class="swiper-wrapper">
+                    <a href="#" class="swiper-slide">
+                            <div class="banner__icon"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-school"></use></svg></div>
+                        <p class="banner__title">24 июня — <br> мастер-класс <br> по дирижированию <br> Теодора Курентзиса. <br> Регистрация</p>
+                    </a>
+                    <a href="#" class="swiper-slide swiper-slide-image" style="background-image: url(img/man.jpg)">
+                        <p class="banner__title">Прямая трансляция концерта сегодня в 19:00</p>
+                    </a>
+                </div>
+            </div>
+    </div>
+</div>
+
+<section class="footer">
+    <nav class="footer__links">
+        <a href="#">программа</a>
+        <a href="#">места</a>
+        <a href="#">советы</a>
+        <a href="#">фестиваль</a>
+        <a href="#">нас поддерживают</a>
+    </nav>
+    <div class="dev">
+        разработка сайта &mdash;
+        <a href="http://da-group.ru">дизайн-студия «ДА!»</a>
+    </div>
+</section>
+
+<!-- END CONTENT  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="//crsten.github.io/datepickk/dist/datepickk.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
+<script src="js/libs/pace.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+<script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//crsten.github.io/datepickk/dist/datepickk.min.css">
+    <link rel="stylesheet" href="css/libs/swiper.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]--> 
+
+    <style>
+        .loader {
+            background: #2a0100;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            z-index: 99999;
+            position: relative;
+        }
+        .loader svg {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            transform-origin: 50% 50%;
+            width: 84px;
+            height: initial;
+            fill: #fff;
+            animation: scale 3s ease-in-out 0s infinite;
+        }
+
+        @keyframes scale {
+            0% {
+                transform: translate(-50%,-50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%,-50%) scale(1.2);
+            }
+            100% {
+                transform: translate(-50%,-50%) scale(1);
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .loader svg { 
+                width: 54px;
+            }
+        }
+
+    </style>
+</head>
+<body>
