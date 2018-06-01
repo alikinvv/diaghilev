@@ -73,6 +73,12 @@ p {margin: 0 0 10px;}
 		padding-left: 35px;
 		padding-right: 10px;
 		position: relative;
+		@include r(1023) {
+			position: absolute;
+			right: 0;
+			bottom: 33px;
+			margin: 0;
+		}
 		svg {
 			position: absolute;
 			top: 50%;
@@ -213,6 +219,8 @@ p {margin: 0 0 10px;}
 		right: 25px;
 	}
 	@include r(767) {right: 36px;}
+	@include r(413) {right: 30px;}
+	@include r(767) {right: 20px;}
 }
 
 .card {	
@@ -278,6 +286,12 @@ p {margin: 0 0 10px;}
 			top: -30px;
 			right: 0;
 		}
+		@include r(413) {right: -15px;}
+		@include r(374) {display: none;}
+		&-top {
+			top: -33px;
+			& + .label {top: -13px;}
+		}
 	}
 	&__right {
 		width: 72.7%;
@@ -312,7 +326,7 @@ p {margin: 0 0 10px;}
 		@include r(767) {
 			position: absolute;
 			bottom: 0;
-			right: 0;
+			right: 11px;
 			display: inline-block;
 			transform: translateX(-30px);
 		}
@@ -333,6 +347,7 @@ p {margin: 0 0 10px;}
 		color: $text;
 		text-decoration: none;
 		@include r(767) {font-size: 22px;}
+		@include r(413) {font-size: 19px;}		
 		&:hover, &:focus {text-decoration: underline;}
 	}
 	&__like {
@@ -344,10 +359,11 @@ p {margin: 0 0 10px;}
 		opacity: 0;
 		transition: all .3s ease-in-out;
 		cursor: pointer;
+		@include r(1023) {opacity: 1;}
 		@include r(767) {
 			position: absolute;
-			bottom: 0;
-			right: 0;
+			bottom: 9px;
+			right: 13px;
 			top: initial;
 			left: initial;
 		}
@@ -654,6 +670,11 @@ p {margin: 0 0 10px;}
 		color: $brown;
 		font-size: 12px;
 		@include r(1023) {display: none;}
+		&-second {
+			display: block;
+			position: absolute;
+			right: 15px;
+		}
 		a {
 			color: $brown;
 			text-decoration: none;
@@ -677,6 +698,7 @@ p {margin: 0 0 10px;}
 		left: 14px;
 		padding-bottom: 60px;
 	}
+	@include r(374) {width: 291px;}
 	&:before {
 		content: '';
 		position: absolute;
@@ -726,9 +748,7 @@ p {margin: 0 0 10px;}
 			background: transparent;
 			border: none;
 			cursor: pointer;
-			&:hover, &:focus {
-				outline: none;
-			}
+			&:hover, &:focus {outline: none;}
 		}
 	}
 	.d-table {
@@ -801,10 +821,12 @@ p {margin: 0 0 10px;}
 	@include r(1279) {width: 86%;}
 	@include r(1023) {
 		left: 20px;
-		width: 89%;
+		right: 20px;
+		width: auto;
 		overflow: scroll;
 		padding-bottom: 30px;
 	}
+	@include r(767) {padding: 13px 12px 30px;}
 	&:before {
 		content: '';
 		position: absolute;
@@ -847,6 +869,8 @@ p {margin: 0 0 10px;}
 		display: block;
 		color: $text;
 		transition: all .3s ease-in-out;
+		@include r(767) {font-size: 21px;}
+		@include r(374) {font-size: 16px;}
 	}
 	&__submit {
 		color: $brown;
@@ -857,21 +881,29 @@ p {margin: 0 0 10px;}
 		border: none;
 		text-align: left;
 		cursor: pointer;
-		&:hover, &:focus {
-			outline: none;
-		}
+		&:hover, &:focus {outline: none;}
 	}
 	&__icons {
 		display: flex;
 		align-items: flex-start;
 		justify-content: space-between;
 		padding: 22px 9px 0;
+		@include r(767) {flex-wrap: wrap;}
 		@include r(1023) {margin-bottom: 50px;}
 	}
 	&__icon {
 		position: relative;		
 		text-decoration: none;
-		p {	color: $gray;}
+		@include r(767) {
+			width: 145px;
+			margin-bottom: 20px;
+		}
+		@include r(413) {width: 129px;}
+		@include r(374) {width: 118px;}
+		p {	
+			color: $gray;
+			@include r(413) {font-size: 15px;}
+		}
 		&:hover:before {transform: translate(-50%, -50%) scale(1.2);}
 		&:before {
 			content: '';
@@ -885,12 +917,20 @@ p {margin: 0 0 10px;}
 			border-radius: 50%;
 			z-index: 1;
 			transition: all .3s ease-in-out;
+			@include r(413) {
+				width: 54px;
+				height: 54px;
+			}
 		}
 		svg {
 			font-size: 76px;
 			position: relative;
 			z-index: 2;
 			margin-bottom: -4px;
+			@include r(413) {
+				font-size: 60px;
+				margin-left: 11px;
+			}
 		}		
 	}
 }
@@ -912,11 +952,19 @@ p {margin: 0 0 10px;}
 		top: initial;
 		bottom: 0;
 		left: 20px;
-		width: 86%;
+		right: 20px;
+		width: auto;
 		overflow: scroll;
 		padding: 25px 23px;
 		padding-bottom: 80px;
 		
+	}
+	@include r(767) {
+		top: 80px;
+		bottom: 0;
+		left: 20px;
+		right: 20px;
+		padding: 10px 10px 80px;
 	}
 	&:before {
 		content: '';
@@ -958,12 +1006,14 @@ p {margin: 0 0 10px;}
 		font-size: 24px;
 		color: $text;
 		transition: all .3s ease-in-out;
+		@include r(767) {margin-bottom: 0;}
 	}
 	&__text {
 		color: $gray;
 		line-height: 1.2;
 		transition: all .3s ease-in-out;
 		margin: 0;
+		@include r(767) {font-size: 15px;}
 	}
 	&__submit {
 		text-decoration: none;
@@ -973,15 +1023,15 @@ p {margin: 0 0 10px;}
 		border: none;
 		text-align: left;
 		cursor: pointer;
-		&:hover, &:focus {
-			outline: none;
-		}
+		@include r(767) {margin-left: 10px;}
+		&:hover, &:focus {outline: none;}
 	}
 }
 
 .content {
 	margin: 0 50px;
 	box-shadow: 0 0 63px rgba(0,0,0,0.2);
+	@include r(1279) {margin: 0 15px;}
 	&__header {
 		height: 336px;
 		padding: 24px 34px;
@@ -992,6 +1042,8 @@ p {margin: 0 0 10px;}
 		flex-wrap: wrap;
 		justify-content: flex-end;
 		flex-direction: column;
+		@include r(1023) {height: 235px;}
+		@include r(767) {padding: 10px 13px;}
 		&:before {
 			content: '';
 			background: $darkBrown;
@@ -1023,6 +1075,12 @@ p {margin: 0 0 10px;}
 			right: 41px;
 			bottom: 30px;
 			padding: 12px 23px;
+			@include r(1023) {font-size: 20px;}
+			@include r(767) {
+				bottom: initial;
+				top: 20px;
+				right: 15px;
+			}
 		}
 	}
 	&__date {
@@ -1032,7 +1090,16 @@ p {margin: 0 0 10px;}
 		display: block;
 		width: 100%;
 		margin-bottom: 18px;
-		span {font-size: 72px;}
+		@include r(1023) {font-size: 33px;}
+		@include r(767) {font-size: 30px;}
+		span {
+			font-size: 72px;
+			@include r(1023) {font-size: 53px;}
+			@include r(767) {
+				font-size: 44px;
+				margin-bottom: 0;
+			}
+		}
 	}
 	&__time {
 		position: relative;
@@ -1041,12 +1108,14 @@ p {margin: 0 0 10px;}
 		display: block;
 		width: 100%;
 		line-height: 0.9;
+		@include r(1023) {font-size: 33px;}
 	}
 	&__col {
 		width: 50%;
 		display: inline-block;
 		position: relative;
 		color: #37474F;
+		@include r(1023) {width: 100%;}
 		&:last-child {
 			p {
 				line-height: 1.4;
@@ -1057,7 +1126,17 @@ p {margin: 0 0 10px;}
 	&__body {
 		padding: 52px 36px;
 		display: flex;
-		.btn-gray {margin-top: 56px;}
+		position: relative;
+		@include r(1023) {flex-wrap: wrap;}
+		@include r(767) {padding: 40px 13px;}
+		.btn-gray {
+			margin-top: 56px;
+			@include r(1023) {margin-top: 0;}
+			@include r(767) {   
+				position: relative;
+				bottom: 17px;
+			}
+		}
 		.label {
 			position: absolute;
 			top: -24px;
@@ -1071,20 +1150,35 @@ p {margin: 0 0 10px;}
 		margin-top: -3px;
 		margin-bottom: 9px;
 		width: 95%;
+		@include r(1023) {font-size: 35px;}
+		@include r(767) {font-size: 25px;}
 	}
 	&__place {
 		font-size: 48px;
 		color: #37474F;
 		margin-top: 59px;
 		margin-bottom: 4px;
+		@include r(1023) {
+			font-size: 27px;
+			margin-top: 0;
+		}
+	}
+	&__age {
+		@include r(1023) {
+			margin-bottom: 30px;
+		}
 	}
 	&__back {
 		color: $brown;
 		text-decoration: none;
 		position: absolute;
-		bottom: 0;
-		left: 0;
+		bottom: 30px;
+		left: 37px;
 		padding-left: 20px;
+		@include r(767) {   
+			bottom: 20px;
+			left: 13px;
+		}
 		&:before {
 			content: '<';
 			position: absolute;

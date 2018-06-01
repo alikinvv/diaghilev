@@ -28,6 +28,20 @@ function slideUp(el, btn, direction) {
 
 $(document).ready(function () {
 
+    // show developer on second pages
+    $('.content').length ? $('.dev').addClass('dev-second') : '';
+
+    // remove header buttons on second pages
+    $('.content').length ? $('.header__buttons').remove() : '';
+
+    // replace heart icon in card
+    if(ww <= 767) {
+        $('.card').each(function() {
+            $(this).find('.card__like').remove();
+            $(this).append('<svg class="card__like icon"><use xlink:href="img/symbol-defs.svg#icon-heart"></use></svg>');
+        });
+    }
+
     ww <= 767 ?  $('.header__sponsor img').attr('src','img/sber-mobile.svg') : $('.header__sponsor img').attr('src','img/sber.svg');
 
     // set of the same height
@@ -47,7 +61,7 @@ $(document).ready(function () {
     ww <= 1023 ?  sameOuterHeight($('.card')) : '';
 
     // .header__buttons move to footer
-    ww <= 1023 ?  $('.header__buttons').css('top', wh - 44) : '';
+    ww <= 1023 && !$('.content').length ? $('.header__buttons').css('top', wh - 44) : '';
     
     // set full screen height .places on mobile
     ww <= 1023 ? $('.places').height(wh - $('.header').height() - $('.footer').height()) : '';
@@ -388,15 +402,19 @@ $(document).ready(function () {
         
     });
 
-    // datepicker
-   var datepicker = new Datepickk({
-       container: document.querySelector('#datepicker'),
-       inline: true,
-       range: true,
-       lang: 'ru'
-   });
-   
-   datepicker.setDate = new Date(2018,5,1);
+    if($('#datepicker').length) {
+        // datepicker
+        var datepicker = new Datepickk({
+            container: document.querySelector('#datepicker'),
+            inline: true,
+            range: true,
+            lang: 'ru'
+        });
+
+        datepicker.setDate = new Date(2018,5,1);
+    }
+
+    
 
    // add submit button to datepicker
    $('.d-tables.range').append('<input class="datepicker__submit" type="submit">');
@@ -451,9 +469,17 @@ $(document).keyup(function(e) {
    }
 });
 
-$(window).resize(function () {
+$(window).resize(function () {    
     ww = $(window).width();
     wh = $(window).height();  
+
+    // replace heart icon in card
+    if(ww <= 767) {
+        $('.card').each(function() {
+            $(this).find('.card__like').remove();
+            $(this).append('<svg class="card__like icon"><use xlink:href="img/symbol-defs.svg#icon-heart"></use></svg>');
+        });
+    }
 
     ww <= 767 ?  $('.header__sponsor img').attr('src','img/sber-mobile.svg') : $('.header__sponsor img').attr('src','img/sber.svg');
 
@@ -491,7 +517,7 @@ $(window).resize(function () {
     ww <= 1023 ? $('.places').height(wh - $('.header').height() - $('.footer').height()) : '';
 
     // .header__buttons move to footer
-    ww <= 1023 ?  $('.header__buttons').css('top', wh - 34) : '';
+    ww <= 1023 && !$('.content').length ?  $('.header__buttons').css('top', wh - 34) : '';
 });
 
 $(window).load(function () {    
