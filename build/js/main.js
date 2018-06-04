@@ -1,7 +1,8 @@
 var trigger = true,
     mobileDirection,
     ww = $(window).width(),
-    wh = $(window).height();
+    wh = $(window).height(),
+    footerLinks = $('.footer__links');
 
 // set position menu blocks
 function setPosition(el, direction) {anime({
@@ -26,7 +27,20 @@ function slideUp(el, btn, direction) {
     })
 }; 
 
-$(document).ready(function () {
+$(document).ready(function () {    
+
+    // create more button in footer
+    if(ww <= 1023 && !$('.footer__dots').length) {
+        $('.footer').append('<div class="footer__dots" style="left:' + $('.header__buttons').width() + 'px"><span>...</span></div>')
+    } else if(ww <= 1023 && $('.footer__dots').length) {
+        $('.footer__dots').css('left', $('.header__buttons').width());
+    } else if(!ww <= 1023 && $('.footer__dots').length) {
+        $('.footer__dots').remove();
+    }
+
+    // replace footer links in body
+    ww <= 1023 ? $('.footer .footer__links').remove() : '';
+    ww <= 1023 ? $('body').append(footerLinks) : '';
 
     // show developer on second pages
     $('.content').length ? $('.dev').addClass('dev-second') : '';
@@ -89,6 +103,59 @@ $(document).ready(function () {
     setPosition('.programms', mobileDirection);
     setPosition('.places', mobileDirection);
     setPosition('#datepicker', mobileDirection);
+    ww <= 1023 ? setPosition('.footer__links', mobileDirection) : '';
+
+    // animate programms block 
+    $('.footer__dots').click(function(e) {
+        if($('.events').hasClass('active') && trigger) {
+            trigger = false;
+            $('.events').removeClass('active');
+            anime({
+                targets: '#datepicker',
+                translateY: ($('#datepicker').outerHeight() + 100) * mobileDirection,
+                duration: 150,
+                easing: 'linear',
+                complete: function() {
+                    trigger = true;
+                    slideDown('.footer__links','.footer__dots');
+                }
+            })
+        }
+        if($('.programms-btn').hasClass('active') && trigger) {
+            trigger = false;
+            $('.programms-btn').removeClass('active');
+            anime({
+                targets: '.programms',
+                translateY: ($('.programms').outerHeight() + 100) * mobileDirection,
+                duration: 150,
+                easing: 'linear',
+                complete: function() {
+                    trigger = true;
+                    slideDown('.footer__links','.footer__dots');
+                }
+            })
+        }
+        if($('.places-btn').hasClass('active') && trigger) {
+            trigger = false;
+            $('.places-btn').removeClass('active');
+            anime({
+                targets: '.places',
+                translateY: ($('.places').outerHeight() + 100) * mobileDirection,
+                duration: 150,
+                easing: 'linear',
+                complete: function() {
+                    trigger = true;
+                    slideDown('.footer__links','.footer__dots');
+                }
+            })
+        }
+
+        if(!$(this).hasClass('active') && trigger) {       
+            slideDown('.footer__links','.footer__dots');
+        } else if(trigger) {           
+            slideUp('.footer__links','.footer__dots', mobileDirection);
+        }
+    });    
 
     // animate programms block 
     $('.programms-btn').click(function(e) {
@@ -98,6 +165,20 @@ $(document).ready(function () {
             anime({
                 targets: '#datepicker',
                 translateY: ($('#datepicker').outerHeight() + 100) * mobileDirection,
+                duration: 150,
+                easing: 'linear',
+                complete: function() {
+                    trigger = true;
+                    slideDown('.programms','.programms-btn');
+                }
+            })
+        }
+        if($('.footer__dots').hasClass('active') && trigger) {
+            trigger = false;
+            $('.footer__dots').removeClass('active');
+            anime({
+                targets: '.footer__links',
+                translateY: ($('.footer__links').outerHeight() + 100) * mobileDirection,
                 duration: 150,
                 easing: 'linear',
                 complete: function() {
@@ -145,6 +226,20 @@ $(document).ready(function () {
                 }
             })
         }
+        if($('.footer__dots').hasClass('active') && trigger) {
+            trigger = false;
+            $('.footer__dots').removeClass('active');
+            anime({
+                targets: '.footer__links',
+                translateY: ($('.footer__links').outerHeight() + 100) * mobileDirection,
+                duration: 150,
+                easing: 'linear',
+                complete: function() {
+                    trigger = true;
+                    slideDown('.places','.places-btn');
+                }
+            })
+        }
         if($('.programms-btn').hasClass('active') && trigger) {
             trigger = false;
             $('.programms-btn').removeClass('active');
@@ -184,7 +279,20 @@ $(document).ready(function () {
                 }
             })
         }
-
+        if($('.footer__dots').hasClass('active') && trigger) {
+            trigger = false;
+            $('.footer__dots').removeClass('active');
+            anime({
+                targets: '.footer__links',
+                translateY: ($('.footer__links').outerHeight() + 100) * mobileDirection,
+                duration: 150,
+                easing: 'linear',
+                complete: function() {
+                    trigger = true;
+                    slideDown('#datepicker','.events');
+                }
+            })
+        }
         if($('.places-btn').hasClass('active') && trigger) {
             trigger = false;
             $('.places-btn').removeClass('active');
@@ -219,6 +327,20 @@ $(document).ready(function () {
             anime({
                 targets: '#datepicker',
                 translateY: ($('#datepicker').outerHeight() + 100) * mobileDirection,
+                duration: 150,
+                easing: 'linear',
+                complete: function() {
+                    trigger = true;
+                }
+            })
+        }
+
+        if($('.footer__dots').hasClass('active') && trigger) {
+            trigger = false;
+            $('.footer__dots').removeClass('active');
+            anime({
+                targets: '.footer__links',
+                translateY: ($('.footer__links').outerHeight() + 100) * mobileDirection,
                 duration: 150,
                 easing: 'linear',
                 complete: function() {
@@ -439,6 +561,20 @@ $(document).keyup(function(e) {
             })
         }
 
+        if($('.footer__dots').hasClass('active') && trigger) {
+            trigger = false;
+            $('.footer__dots').removeClass('active');
+            anime({
+                targets: '.footer__links',
+                translateY: ($('.footer__links').outerHeight() + 100) * mobileDirection,
+                duration: 150,
+                easing: 'linear',
+                complete: function() {
+                    trigger = true;
+                }
+            })
+        }
+
         if($('.programms-btn').hasClass('active') && trigger) {
             trigger = false;
             $('.programms-btn').removeClass('active');
@@ -473,6 +609,19 @@ $(window).resize(function () {
     ww = $(window).width();
     wh = $(window).height();  
 
+    // create more button in footer
+    if(ww <= 1023 && !$('.footer__dots').length) {
+        $('.footer').append('<div class="footer__dots" style="left:' + $('.header__buttons').width() + 'px"><span>...</span></div>')
+    } else if(ww <= 1023 && $('.footer__dots').length) {
+        $('.footer__dots').css('left', $('.header__buttons').width());
+    } else if(!ww <= 1023 && $('.footer__dots').length) {
+        $('.footer__dots').remove();
+    }
+
+    // replace footer links in body
+    ww <= 1023 ? $('.footer .footer__links').remove() : '';
+    ww <= 1023 ? $('body').append(footerLinks) : '';
+
     // replace heart icon in card
     if(ww <= 767) {
         $('.card').each(function() {
@@ -488,10 +637,12 @@ $(window).resize(function () {
     setPosition('.programms', mobileDirection);
     setPosition('.places', mobileDirection);
     setPosition('#datepicker', mobileDirection);
+    ww <= 1023 ? setPosition('.footer__links', mobileDirection) : '';
 
     slideUp('.programms','.programms-btn', mobileDirection);
     slideUp('#datepicker','.events', mobileDirection);
     slideUp('.places','.places-btn', mobileDirection);
+    ww <= 1023 ? slideUp('.footer__links','.footer__dots', mobileDirection) : '';
 
     var swiperMain = new Swiper('.swiper-container', {
         direction: 'vertical',

@@ -220,7 +220,7 @@ p {margin: 0 0 10px;}
 	}
 	@include r(767) {right: 36px;}
 	@include r(413) {right: 30px;}
-	@include r(767) {right: 20px;}
+	@include r(374) {right: 20px;}
 }
 
 .card {	
@@ -651,18 +651,46 @@ p {margin: 0 0 10px;}
 		z-index: 999;
 	}
 	&__links {
-		@include r(1023) {display: none;}
+		@include r(1023) {
+			display: block;
+			background: #fff;
+			padding: 30px 20px 20px;
+			position: absolute;
+			bottom: 55px;
+			left: 20px;
+			right: 20px;
+			box-shadow: 0 0 39px rgba(0,0,0,0.2);
+			z-index: 998;
+			&:before {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 100px;
+				transform: translateY(100%);
+				box-shadow: 0 20px 39px rgba(0,0,0,0.2);
+				background: #fff;
+				z-index: 997;
+			}
+		}
 		a {
 			color: #fff;
 			text-decoration: none;
 			position: relative;
 			margin-right: 9px;
+			@include r(1023) {
+				display: block;
+				color: $text;
+				margin-bottom: 10px;
+			}
 			&:after {
 				content: '/';
 				position: absolute;
 				right: -8px;
 				top: 50%;
 				transform: translateY(-50%);
+				@include r(1023) {display: none;}
 			}
 		}
 	}
@@ -679,6 +707,29 @@ p {margin: 0 0 10px;}
 			color: $brown;
 			text-decoration: none;
 			&:hover, &:focus {text-decoration: underline;}
+		}
+	}
+	&__dots {
+		position: absolute;
+		border: 1px solid #fff;
+		padding: 8px 13px;
+		margin-top: 1px;
+		transition: all .3s ease-in-out;
+		@include r(1023) {transform: translateX(13px)}
+		@include r(767) {
+			transform: translateX(20px);
+			padding: 6px 11px 7px;
+			margin-top: 0px;
+		}
+		&.active {
+			background: $yellow;
+			color: $darkBrown;
+			border-color: $yellow;
+		}
+		span {
+			display: block;
+			position: relative;
+			top: -4px;
 		}
 	}
 }
@@ -1116,11 +1167,9 @@ p {margin: 0 0 10px;}
 		position: relative;
 		color: #37474F;
 		@include r(1023) {width: 100%;}
-		&:last-child {
-			p {
-				line-height: 1.4;
-				margin-bottom: 30px;
-			}
+		&:last-child p {
+			line-height: 1.4;
+			margin-bottom: 30px;
 		}
 	}
 	&__body {
@@ -1164,9 +1213,7 @@ p {margin: 0 0 10px;}
 		}
 	}
 	&__age {
-		@include r(1023) {
-			margin-bottom: 30px;
-		}
+		@include r(1023) {margin-bottom: 30px;}
 	}
 	&__back {
 		color: $brown;
