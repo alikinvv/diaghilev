@@ -27,6 +27,7 @@ function slideUp(el, btn, direction) {
     })
 }; 
 
+
 $(document).ready(function () {    
 
     // create more button in footer
@@ -50,7 +51,7 @@ $(document).ready(function () {
 
     // replace heart icon in card
     if(ww <= 767) {
-        $('.card').each(function() {
+        $('.cara').each(function() {
             $(this).find('.card__like').remove();
             $(this).append('<svg class="card__like icon"><use xlink:href="img/symbol-defs.svg#icon-heart"></use></svg>');
         });
